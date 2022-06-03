@@ -1,0 +1,15 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.library {
+    border-style: solid;
+}
