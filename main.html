@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="layout">
-        <div class="forms">
+        <div class="forms" id="book-form">
             <form action="">
                 
                 <label for="name">Book Title: </label>
@@ -29,9 +29,18 @@
         </div>
 <div class="library">
     Library
-    <div id="added">
-        
-    </div>
+    <table>
+       <thead>
+           <tr>
+               <th>Title</th>
+               <th>Author</th>
+               <th>Read</th>
+               <th>Delete</th>
+               
+           </tr>
+       </thead> 
+       <tbody id="book-list"></tbody>
+    </table>
 </div>
 </div>
 <script src="code.js"></script>

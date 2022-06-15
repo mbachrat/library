@@ -1,7 +1,7 @@
 
 let myLibrary = [];
 
-
+//constructor
 function Book(name, author, pages, read, id) {
     this.name = name
     this.id = id
@@ -10,50 +10,64 @@ function Book(name, author, pages, read, id) {
     this.read = read
 }
 
+//tested book in array
 let bookone = new Book('test','matcko', '180','no', Date.now())
 myLibrary.push(bookone);
 
+//function that takes form inputs 
 function addBookToLibrary(ev) {
 ev.preventDefault();
 
-let book = 
-    new Book(document.getElementById("name").value, 
+document.querySelector("#book-form").addEventListener('submit', (e) => {
+    e.preventDefault();
+    let book = 
+    new Book (document.getElementById("name").value, 
     document.getElementById("author").value,
     document.getElementById("pages").value,
     'no',
     Date.now());
 
+    document.forms[0].reset();
+    console.log(book);
+    addBookToList(book);
+})
 
-myLibrary.push(book);
-document.forms[0].reset();
-console.log(myLibrary)
 
 
-
+myLibrary.forEach(book => addBookToList(book)) //not ready
 
 
 
 }
 
+function addBookToList(book) {
+    const list = document.querySelector('#book-list');
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `<td>${book.name}</td>
+    <td>${book.author}</td>
+    <td>${book.read}</td>
+    <td><a>X</a></td>`
+     
+    
+    list.appendChild(row);
+    
+}
+
+//function trying to paste form inputs to HTML
 function refresh(ev) {
     ev.preventDefault();
 
-    for (let i = 0; i < myLibrary.length; i++) {
+let lib = document.getElementById("added");
+let booked = document.createElement('p')
+booked.textContent = myLibrary[myLibrary.length-1].name;
+lib.appendChild(booked);
     
-        let added = document.getElementById('added');
-        let p[i] = document.createElement('p');
-        p.innerHTML = myLibrary[i].name + "<br>";;
-        added.append(p[i]);
-       
-
-      }
-    }
+    
+}
 
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById('submit').addEventListener('click', addBookToLibrary);
-});
+document.addEventListener('DOMContentLoaded', addBookToLibrary);
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById('refresh').addEventListener('click', refresh);
-});
+
