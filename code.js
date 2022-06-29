@@ -47,8 +47,11 @@ function addBookToList(book) {
 
     row.innerHTML = `<td>${book.name}</td>
     <td>${book.author}</td>
-    <td>${book.read}</td>
-    <td><a>X</a></td>`
+    <td><label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+  </label></td>
+    <td><a class="delete">X</a></td>`
      
     
     list.appendChild(row);
@@ -70,4 +73,19 @@ lib.appendChild(booked);
 
 document.addEventListener('DOMContentLoaded', addBookToLibrary);
 
+function deleteBook(el) {
+  
+    if(el.className.includes('delete')) {
+        el.parentElement.parentElement.remove();
 
+        alert("Book Deleted")
+    }
+}
+
+
+
+//remove book
+document.querySelector('#book-list').addEventListener('click', (e)=> {
+    console.log(e.target)
+    deleteBook(e.target)
+});
